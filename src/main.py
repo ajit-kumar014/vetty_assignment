@@ -36,3 +36,27 @@ async def health_check():
             "coingecko": "operational" if coingecko_up else "unavailable"
         }
     }
+
+@app.get("/version", tags=["Monitoring"])
+async def version_info():
+    coingecko_up, gecko_response = check_coingecko()
+    version = "unknown"
+    if coingecko_up:
+        match = re.search(r"V(\d+)", gecko_response)
+        version = f"v{match.group(1)}" if match else "unknown"
+    
+    return {
+        "application_version": APP_VERSION,
+        "dependencies": {
+            "coingecko_api": version
+        }
+    }
+
+@app.get("/coins", tags=["Cryptocurrency"])
+def list_coins(page_num: int = 1, per_page: int = 10, _: str = Depends(auth)):
+    response = requests.get(f"{COINGECKO_URL}/coins/markets", params={"vs_currency": "cad", "page": page_num, "per_page": per_page})
+    return response.json()
+
+@app.get("/categories", tags=["Cryptocurrency"])
+async def list_categories(_: str = Depends(auth)):
+    return requests.get(f"{COINGECKO_URL}/coins/categories").json()
