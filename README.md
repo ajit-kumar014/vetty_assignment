@@ -41,6 +41,8 @@ Make sure docker is installed in the system.
 docker compose up -d
 ```
 
+Open the app at http://localhost:8001
+
 ## Configuration
 
 The service can be configured using the following environment variables:
