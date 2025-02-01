@@ -4,7 +4,7 @@ services:
     ports:
       - "8001:8000"
     environment:
-      - API_KEY=${API_KEY:-2509e9d6-b851-46e5-bd9f-7d2e3d736458}
+      - API_KEY=${API_KEY:-verystrongpassword}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
