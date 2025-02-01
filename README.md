@@ -62,6 +62,14 @@ The service will be available at `http://localhost:8000`
 
 ## API Endpoints
 
+### Swagger Endpoint
+
+```
+GET /docs
+```
+
+Returns the swagger API documentation.
+
 ### Monitoring
 
 #### Health Check
