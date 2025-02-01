@@ -18,13 +18,13 @@ A FastAPI-based REST API service that provides cryptocurrency market data by wra
 - Requests library
 - A CoinGecko API account (free tier available)
 
-## Installation
+## Local Installation
 
 1. Clone the repository
 2. Install dependencies:
 
 ```bash
-pip install fastapi uvicorn requests python-dotenv
+pip install -r requirements.txt
 ```
 
 3. Set up environment variables:
@@ -33,11 +33,19 @@ pip install fastapi uvicorn requests python-dotenv
 export API_KEY=your_secret_key_here
 ```
 
+## Docker Installation
+
+Make sure docker is installed in the system.
+
+```bash
+docker compose up -d
+```
+
 ## Configuration
 
 The service can be configured using the following environment variables:
 
-- `API_KEY`: Authentication key for accessing the API (default: "2509e9d6-b851-46e5-bd9f-7d2e3d736458")
+- `API_KEY`: Authentication key for accessing the API (default: "verystrongpassword")
 - `COINGECKO_URL`: Base URL for CoinGecko API (default: "https://api.coingecko.com/api/v3")
 
 ## Running the Service
@@ -45,7 +53,7 @@ The service can be configured using the following environment variables:
 Start the service using uvicorn:
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn src.main:app --reload
 ```
 
 The service will be available at `http://localhost:8000`
