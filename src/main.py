@@ -7,7 +7,7 @@ import re
 
 app = FastAPI()
 
-API_KEY = os.getenv("API_KEY", "2509e9d6-b851-46e5-bd9f-7d2e3d736458")
+API_KEY = os.getenv("API_KEY", "verystrongpassword")
 COINGECKO_URL = "https://api.coingecko.com/api/v3"
 APP_VERSION = "1.0.0"
 
