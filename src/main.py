@@ -60,3 +60,8 @@ def list_coins(page_num: int = 1, per_page: int = 10, _: str = Depends(auth)):
 @app.get("/categories", tags=["Cryptocurrency"])
 async def list_categories(_: str = Depends(auth)):
     return requests.get(f"{COINGECKO_URL}/coins/categories").json()
+
+@app.get("/coin/{coin_id}", tags=["Cryptocurrency"], dependencies=[Depends(auth)])
+def get_coin(coin_id: str):
+    response = requests.get(f"{COINGECKO_URL}/coins/{coin_id}", params={"localization": False})
+    return response.json()
